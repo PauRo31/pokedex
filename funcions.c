@@ -32,7 +32,7 @@ int carregar_centre(pokedexcentre_t **pokedexcentre)
     return num_poke;
 }
 
-int carregar_costa(pokedexcosta_t **pokedexcosta)
+/*int carregar_costa(pokedexcosta_t **pokedexcosta)
 {
     FILE *fit;
     int num_poke = -1;
@@ -189,4 +189,4 @@ int fases_repes_mun(pokedexmuntanya_t *pokedexmuntanya, int n)
         repe = 2;
     }
     return repe;
-}
+}*/

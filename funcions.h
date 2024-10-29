@@ -32,7 +32,7 @@ typedef struct
     int fases_repes;
 }pokedexmuntanya_t;
 
-int carregar_centre(pokedexcentre_t **pokedexcentre);
+extern int carregar_centre(pokedexcentre_t **pokedexcentre);
 
 int carregar_costa(pokedexcosta_t **pokedexcosta);
 

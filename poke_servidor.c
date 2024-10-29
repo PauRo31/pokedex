@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "funcions.h"
 /* Inclusio de fitxers .h per als sockets */
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -18,9 +18,9 @@ int main(int argc, char **argv)
     pokedexmuntanya_t *dexmun;
     if (argc == 2)
     {
-        int num_poke_cen = carregar_centre(&pokedexcentre);
-        int num_poke_cost = carregar_costa(&pokedexcosta);
-        int num_poke_mun = carregar_muntanya(&pokedexmuntanya);
+        int num_poke_cen = carregar_centre(&dexcen);
+        /*int num_poke_cost = carregar_costa(&pokedexcosta);
+        int num_poke_mun = carregar_muntanya(&pokedexmuntanya);*/
         int s;                                                    /* El socket */
         struct sockaddr_in socket_servidor;                       /* Dades del socket on escolta el servidor */
         struct sockaddr_in contacte_client;                       /* Adreça i port des d'on el client envia el paquet */
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
             /* Servidor operatiu! */
             printf("Servidor operatiu al port %d!\n", atoi(argv[1]));
 
-            int numero, pokedex; /* Pel desar el número (protocol) */
+            int n, pokedex; /* Pel desar el número (protocol) */
 
             while (1)
             {
@@ -59,28 +59,30 @@ int main(int argc, char **argv)
                 printf("Paquet rebut!\n");
 
                 /* Tractar la petició... */
-                sscanf(paquet, "%d", &numero);
+                sscanf(paquet, "%d", &n);
                 do
                 {
                     sscanf(paquet, "%d", &pokedex);
                     do
                     {
-                        sscanf(paquet, "%d", &numero);
+                        sscanf(paquet, "%d", &n);
                         sprintf(paquet, "La pokedex de muntanya nomes te 151 pokemon");
-                    } while ((pokedex == 3 && numero > 151) || numero < 1 || numero > 153);
+                    } while (/*(pokedex == 3 && numero > 151) || */n < 1 || n > 153);
 
-                    printf("Volen el pokemon %d de la pokedex de %d\n", numero, pokedex);
+                    printf("Volen el pokemon %d de la pokedex de %d\n", n, pokedex);
                     switch (pokedex)
                     {
                     case 1:
-                        sprintf(paquet, mostra_dexcen(dexcen, numero)); // no es pot posar el void aqui
-                        if (comprova_evoluciocen(dexcen, numero))
+                        sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",  
+                        dexcen[n].id, dexcen[n].fase, dexcen[n].nom, dexcen[n].tipo1, dexcen[n].tipo2); 
+                        /*if (comprova_evoluciocen(dexcen, numero))
                         {
-                            sprintf(paquet, mostra_dexcen(dexcen, numero + 1));
-                        }
+                            sprintf(paquet, paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",  
+                        	pokedexcentre[n + 1].id, pokedexcentre[n].fase, pokedexcentre[n].nom, pokedexcentre[n].tipo1, pokedexcentre[n].tipo2);
+                        }*/
 
                         break;
-                    case 2:
+                    /*case 2:
                         if (numero == 77)
                         {
                             sprintf(paquet, mostra_eeveelutions());
@@ -98,9 +100,9 @@ int main(int argc, char **argv)
                         {
                             sprintf(paquet, mostra_dexmun(dexcen, numero + 1));
                         }
-                        break;
+                        break;*/
                     }
-                } while (numero != -1);
+                } while (n != -1);
                 
                 /* Enviem el paquet a l'adreça i port on està esperant el client */
                 sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_client, contacte_client_mida);
@@ -111,10 +113,10 @@ int main(int argc, char **argv)
         /* Tanquem el socket */
         close(s);
     }
-
     else
     {
         printf("El nombre de paràmetres no és el correcte!\n");
     }
     return 0;
+
 }
