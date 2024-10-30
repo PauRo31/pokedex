@@ -17,13 +17,21 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         int num_pokemon = carregar(&dex);
+        if (num_pokemon <= 0 || dex == NULL)
+        {
+            printf("Error");
+            return 1;
+        }
+        
         int s;                                                    /* El socket */
         struct sockaddr_in socket_servidor;                       /* Dades del socket on escolta el servidor */
         struct sockaddr_in contacte_client;                       /* Adreça i port des d'on el client envia el paquet */
         socklen_t contacte_client_mida = sizeof(contacte_client); /* Longitud de les dades adreça i port */
 
         char paquet[MIDA_PAQUET]; /* Per posar les dades a enviar/rebre */
-
+        char paquet1[MIDA_PAQUET];
+        char paquet2[MIDA_PAQUET];
+        char paquet3[MIDA_PAQUET];
         /* Volem socket d'internet i no orientat a la connexio */
         s = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -57,15 +65,26 @@ int main(int argc, char **argv)
                 /* Tractar la petició... */
 
                 sscanf(paquet, "%d", &n);
-                int evolucio_bifurcada = fases_repes(dex);
-                    printf("Volen el pokemon %d de \n", n);
-                sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
-                        dex[n].id, dex[n].fase, dex[n].nom, dex[n].tipo1, dex[n].tipo2);
-                if (comprova_evoluciocen(dex, num))
+                if (n < 0 || num_pokemon)
                 {
-                    sprintf("La seva evolucio es:\n");
-                    sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
-                            dex[n + 1].id, dex[n + 1].fase, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2);
+                    printf("index fora de rang");
+                }
+                
+                int evolucio_bifurcada = fases_repes(dex);
+                printf("Volen el pokemon %d de \n", n);
+                
+                sprintf(paquet, "Numero de la pokedex: %d\n", dex[n].id);
+                sprintf(paquet1, "Nom del Pokemon: %s\n", (*dex[n].nom));
+                sprintf(paquet2, "Tipo 1: %s\n", (*dex[n].tipo1));
+                sprintf(paquet3, "Tipo 2: %s\n", (*dex[n].tipo2));
+                /*if (comprova_evolucio(dex, n))
+                {
+                    strcat(paquet, "La seva evolucio es:\n");
+                    strcat(paquet, "Numero de la pokedex: ");
+                    char evolucio[100]; // Buffer temporal
+                    sprintf(evolucio, "%d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
+                            dex[n + 1].id, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2);
+                    strcat(paquet, evolucio);
                 }
                 /*if (evolucio_bifurcada == 1) // comprova si un pokemon te mes de dos evolucions possibles de fase 1
                 {
@@ -76,9 +95,9 @@ int main(int argc, char **argv)
                     }
                     else //numero != 230
                     {
-                        
+
                     }
-                    
+
                 }
                 else if (evolucio_bifurcada == 2)// comprova si un pokemon te mes de dos evolucions possibles de fase 1
                 {

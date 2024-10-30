@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
 #include "funcions.h"
 
 int carregar(pokedex_t **pokedex)
@@ -22,7 +17,7 @@ int carregar(pokedex_t **pokedex)
             for (int i = 0; i < num_poke; i++)
             {
                 fscanf(fit, "%d\n %d %d %s %s %s %d\n", &(((*pokedex)[i]).id), &(((*pokedex)[i]).fase),
-                       (*pokedex)[i].nom, (*pokedex)[i].tipo1, (*pokedex)[i].tipo2, &(((*pokedex)[i]).fase));
+                       (*pokedex)[i].nom, (*pokedex)[i].tipo1, (*pokedex)[i].tipo2, &(((*pokedex)[i]).fases_repes));
             }
             fclose(fit);
         }
@@ -32,7 +27,7 @@ int carregar(pokedex_t **pokedex)
     return num_poke;
 }
 
-void mostra_dex(pokedex_t *pokedex, int n)
+/*void mostra_dex(pokedex_t *pokedex, int n)
 {
     printf("Numero de la pokedex: %d\n", pokedex[n].id);
     printf("Fase: %d\n", pokedex[n].fase);
@@ -41,7 +36,7 @@ void mostra_dex(pokedex_t *pokedex, int n)
     printf("Tipo Secundari: %s\n", pokedex[n].tipo2);
 }
 
-bool comprova_evolucio(pokedex_t *pokedex, int n)
+/*bool comprova_evolucio(pokedex_t *pokedex, int n)
 {
     bool evo = false;
     if (pokedex[n].fase < pokedex[n + 1].fase) // n es un pokemon basic
