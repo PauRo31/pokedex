@@ -36,14 +36,12 @@ int main(int argc, char **argv)
 
         /* Execucio del protocol */
         /* 1) Demanem un número pel teclat */
-        int n, pokedex;
+        int n;
         printf("Benvingut/da!\nPosa un número i et retornarem el pokemon corresponent a la pokedex de kalos ");
         scanf("%d",&n);
-        printf("Quina pokedex vols mirar? 1: Centre, 2: Costa, 3: Muntanya\n");
-        scanf("%d", &pokedex)
         
         /* Muntem el buffer */
-        sprintf(paquet, "%d%d\n", n, pokedex);
+        sprintf(paquet, "%d\n", n);
         
         /* L'enviem */
         sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_servidor, sizeof(contacte_servidor));

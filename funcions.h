@@ -10,7 +10,7 @@ typedef struct
     char tipo1[25];
     char tipo2[25];
     int fases_repes;
-}pokedexcentre_t;
+}pokedex_t;
 
 int carregar(pokedex_t **pokedex);
 
