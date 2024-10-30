@@ -51,7 +51,7 @@ bool comprova_evolucio(pokedex_t *pokedex, int n)
     return evo;
 }
 
-int fases_repes(pokedex_t *pokedex, int n)
+/*int fases_repes(pokedex_t *pokedex, int n)
 {
     int repe = 0;
     if (pokedex[n].fases_repes == 1)
@@ -65,7 +65,7 @@ int fases_repes(pokedex_t *pokedex, int n)
     return repe;
 }
 
-/*
+
 void mostra_eeveelutions(pokedex_t *pokedex, int n)
 {
     for (int i = n + 1; i < 19; i++)

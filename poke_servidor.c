@@ -57,17 +57,17 @@ int main(int argc, char **argv)
                 /* Tractar la petició... */
 
                 sscanf(paquet, "%d", &n);
-                int evolucio_bifurcada = fases_repes(dex)
-                    printf("Volen el pokemon %d de la pokedex de %d\n", n, dex);
+                int evolucio_bifurcada = fases_repes(dex);
+                    printf("Volen el pokemon %d de \n", n);
                 sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
-                        dexcen[n].id, dexcen[n].fase, dexcen[n].nom, dexcen[n].tipo1, dexcen[n].tipo2);
-                if (comprova_evoluciocen(dexcen, numero))
+                        dex[n].id, dex[n].fase, dex[n].nom, dex[n].tipo1, dex[n].tipo2);
+                if (comprova_evoluciocen(dex, num))
                 {
-                    sprintf("La seva evolucio es:\n")
-                    sprintf(paquet, paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
-                            pokedexcentre[n + 1].id, pokedexcentre[n + 1].fase, pokedexcentre[n + 1].nom, pokedexcentre[n + 1].tipo1, pokedexcentre[n + 1].tipo2);
+                    sprintf("La seva evolucio es:\n");
+                    sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
+                            dex[n + 1].id, dex[n + 1].fase, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2);
                 }
-                if (evolucio_bifurcada == 1) // comprova si un pokemon te mes de dos evolucions possibles de fase 1
+                /*if (evolucio_bifurcada == 1) // comprova si un pokemon te mes de dos evolucions possibles de fase 1
                 {
                     sprintf("Aquest pokemon te mes d'una evolucio de la mateixa fase (1):\n");
                     if (numero == 230) //cas especial eevee, pokemon amb 8 evolucions diferents de fase 1
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
                 else if (evolucio_bifurcada == 2)// comprova si un pokemon te mes de dos evolucions possibles de fase 1
                 {
                     sprintf("Aquest pokemon te mes d'una evolucio de la mateixa fase (2):\n");
-                }
+                }*/
 
                 /* Enviem el paquet a l'adreça i port on està esperant el client */
                 sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_client, contacte_client_mida);
