@@ -28,7 +28,7 @@ int main(int argc, char **argv)
         struct sockaddr_in contacte_client;                       /* Adreça i port des d'on el client envia el paquet */
         socklen_t contacte_client_mida = sizeof(contacte_client); /* Longitud de les dades adreça i port */
 
-        char paquet[MIDA_PAQUET]; /* Per posar les dades a enviar/rebre */
+        char paquet[MIDA_PAQUET]; /* Per posar les dades a enviar/rebre */ //partició del TCP???
         char paquet1[MIDA_PAQUET];
         char paquet2[MIDA_PAQUET];
         char paquet3[MIDA_PAQUET];
