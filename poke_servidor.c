@@ -13,14 +13,10 @@
 
 int main(int argc, char **argv)
 {
-    pokedexcentre_t *dexcen;
-    pokedexcosta_t *dexcost;
-    pokedexmuntanya_t *dexmun;
+    pokedex_t *dex;
     if (argc == 2)
     {
-        int num_poke_cen = carregar_centre(&dexcen);
-        /*int num_poke_cost = carregar_costa(&pokedexcosta);
-        int num_poke_mun = carregar_muntanya(&pokedexmuntanya);*/
+        int num_pokemon = carregar(&dex);
         int s;                                                    /* El socket */
         struct sockaddr_in socket_servidor;                       /* Dades del socket on escolta el servidor */
         struct sockaddr_in contacte_client;                       /* Adreça i port des d'on el client envia el paquet */
@@ -49,7 +45,7 @@ int main(int argc, char **argv)
             /* Servidor operatiu! */
             printf("Servidor operatiu al port %d!\n", atoi(argv[1]));
 
-            int n, pokedex; /* Pel desar el número (protocol) */
+            int n; /* Pel desar el número (protocol) */
 
             while (1)
             {
@@ -59,51 +55,36 @@ int main(int argc, char **argv)
                 printf("Paquet rebut!\n");
 
                 /* Tractar la petició... */
+
                 sscanf(paquet, "%d", &n);
-                do
+                int evolucio_bifurcada = fases_repes(dex)
+                    printf("Volen el pokemon %d de la pokedex de %d\n", n, dex);
+                sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
+                        dexcen[n].id, dexcen[n].fase, dexcen[n].nom, dexcen[n].tipo1, dexcen[n].tipo2);
+                if (comprova_evoluciocen(dexcen, numero))
                 {
-                    sscanf(paquet, "%d", &pokedex);
-                    do
+                    sprintf("La seva evolucio es:\n")
+                    sprintf(paquet, paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",
+                            pokedexcentre[n + 1].id, pokedexcentre[n + 1].fase, pokedexcentre[n + 1].nom, pokedexcentre[n + 1].tipo1, pokedexcentre[n + 1].tipo2);
+                }
+                if (evolucio_bifurcada == 1) // comprova si un pokemon te mes de dos evolucions possibles de fase 1
+                {
+                    sprintf("Aquest pokemon te mes d'una evolucio de la mateixa fase (1):\n");
+                    if (numero == 230) //cas especial eevee, pokemon amb 8 evolucions diferents de fase 1
                     {
-                        sscanf(paquet, "%d", &n);
-                        sprintf(paquet, "La pokedex de muntanya nomes te 151 pokemon");
-                    } while (/*(pokedex == 3 && numero > 151) || */n < 1 || n > 153);
-
-                    printf("Volen el pokemon %d de la pokedex de %d\n", n, pokedex);
-                    switch (pokedex)
-                    {
-                    case 1:
-                        sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",  
-                        dexcen[n].id, dexcen[n].fase, dexcen[n].nom, dexcen[n].tipo1, dexcen[n].tipo2); 
-                        /*if (comprova_evoluciocen(dexcen, numero))
-                        {
-                            sprintf(paquet, paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n",  
-                        	pokedexcentre[n + 1].id, pokedexcentre[n].fase, pokedexcentre[n].nom, pokedexcentre[n].tipo1, pokedexcentre[n].tipo2);
-                        }*/
-
-                        break;
-                    /*case 2:
-                        if (numero == 77)
-                        {
-                            sprintf(paquet, mostra_eeveelutions());
-                        }
-
-                        sprintf(paquet, mostra_dexcost(dexcost, numero)); // no es pot posar el void aqui
-                        if (comprova_evoluciocost(dexcost, numero))
-                        {
-                            sprintf(paquet, mostra_dexcost(dexcen, numero + 1));
-                        }
-                        break;
-                    case 3:
-                        sprintf(paquet, mostra_dexmun(dexmun, numero)); // no es pot posar el void aqui
-                        if (comprova_evoluciomun(dexmun, numero))
-                        {
-                            sprintf(paquet, mostra_dexmun(dexcen, numero + 1));
-                        }
-                        break;*/
+                        sprintf(paquet, mostra_eeveelutions());
                     }
-                } while (n != -1);
-                
+                    else //numero != 230
+                    {
+                        
+                    }
+                    
+                }
+                else if (evolucio_bifurcada == 2)// comprova si un pokemon te mes de dos evolucions possibles de fase 1
+                {
+                    sprintf("Aquest pokemon te mes d'una evolucio de la mateixa fase (2):\n");
+                }
+
                 /* Enviem el paquet a l'adreça i port on està esperant el client */
                 sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_client, contacte_client_mida);
                 printf("Càlcul enviat!\n");
@@ -118,5 +99,4 @@ int main(int argc, char **argv)
         printf("El nombre de paràmetres no és el correcte!\n");
     }
     return 0;
-
 }

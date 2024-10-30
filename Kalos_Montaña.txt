@@ -1,4 +1,3 @@
-151
 1 0 Diglett Ground NULL 0 
 2 1 Dugtrio Ground NULL 0 
 3 0 Trapinch Ground NULL 0 
