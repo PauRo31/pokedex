@@ -34,9 +34,9 @@ int carregar(pokedex_t **pokedex)
     printf("Nom del Pokemon: %s\n", pokedex[n].nom);
     printf("Tipo Primari: %s\n", pokedex[n].tipo1);
     printf("Tipo Secundari: %s\n", pokedex[n].tipo2);
-}
+}*/
 
-/*bool comprova_evolucio(pokedex_t *pokedex, int n)
+bool comprova_evolucio(pokedex_t *pokedex, int n)
 {
     bool evo = false;
     if (pokedex[n].fase < pokedex[n + 1].fase) // n es un pokemon basic
@@ -46,22 +46,18 @@ int carregar(pokedex_t **pokedex)
     return evo;
 }
 
-/*int fases_repes(pokedex_t *pokedex, int n)
+int fases_repes(pokedex_t *pokedex, int n)
 {
     int repe = 0;
     if (pokedex[n].fases_repes == 1)
     {
         repe = 1;
     }
-    else if (pokedex[n].fases_repes == 2)
-    {
-        repe = 2;
-    }
     return repe;
 }
 
 
-void mostra_eeveelutions(pokedex_t *pokedex, int n)
+/*void mostra_eeveelutions(pokedex_t *pokedex, int n)
 {
     for (int i = n + 1; i < 19; i++)
     {
