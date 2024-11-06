@@ -62,8 +62,8 @@
 61 0 Farfetch'd Normal Flying 0  
 62 0 Riolu Fighting NULL 0 
 63 1 Lucario Fighting Steel 0  
-64 0 Ralts Psychic Fairy 2
-65 1 Kirlia Psychic Fairy 0  
+64 0 Ralts Psychic Fairy 0
+65 1 Kirlia Psychic Fairy 1  
 66 2 Gardevoir Psychic Fairy 0  
 67 2 Gallade Psychic Fighting 0  
 68 0 Flabébé Fairy NULL 0 
@@ -103,8 +103,8 @@
 102 0 Abra Psychic NULL 0 
 103 1 Kadabra Psychic NULL 0 
 104 2 Alakazam Psychic NULL 0 
-105 0 Oddish Grass Poison 2 
-106 1 Gloom Grass Poison 0  
+105 0 Oddish Grass Poison 0 
+106 1 Gloom Grass Poison 1  
 107 2 Vileplume Grass Poison 0  
 108 2 Bellossom Grass NULL 0  
 109 0 Sentret Normal NULL 0 
@@ -337,8 +337,8 @@
 336 0 Gastly Ghost Poison 0 
 337 1 Haunter Ghost Poison 0 
 338 2 Gengar Ghost Poison 0 
-339 0 Poliwag Water NULL 2  
-340 1 Poliwhirl Water NULL 0 
+339 0 Poliwag Water NULL 0  
+340 1 Poliwhirl Water NULL 1 
 341 2 Poliwrath Water Fighting 0 
 342 2 Politoed Water NULL 0 
 343 0 Ekans Poison NULL 0 
