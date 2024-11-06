@@ -14,7 +14,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#define MIDA_PAQUET 50
+#define MIDA_PAQUET 200
 
 int main(int argc, char **argv)
 {
@@ -26,9 +26,6 @@ int main(int argc, char **argv)
         struct sockaddr_in contacte_servidor; /* Adreça i port on hi ha el servidor */
 
         char paquet[MIDA_PAQUET]; /* Per posar les dades a enviar/rebre */
-        char paquet1[MIDA_PAQUET];
-        char paquet2[MIDA_PAQUET];
-        char paquet3[MIDA_PAQUET];
         /* Volem socket d'internet i no orientat a la connexio */
         s = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -49,14 +46,8 @@ int main(int argc, char **argv)
         sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_servidor, sizeof(contacte_servidor));
         printf("Paquet enviat! Espero resposta...\n");
 
-        recvfrom(s, paquet, MIDA_PAQUET, 0, NULL, NULL); /* NULL -> No cal saber des d'on ens envien el paquet. */
+        recvfrom(s, paquet, sizeof(paquet), 0, NULL, NULL); /* NULL -> No cal saber des d'on ens envien el paquet. */
         printf("He rebut la resposta: %s\n", paquet);
-        recvfrom(s, paquet1, MIDA_PAQUET, 0, NULL, NULL);
-        printf("He rebut la resposta: %s\n", paquet1);
-        recvfrom(s, paquet2, MIDA_PAQUET, 0, NULL, NULL);
-        printf("He rebut la resposta: %s\n", paquet2);
-        recvfrom(s, paquet3, MIDA_PAQUET, 0, NULL, NULL);
-        printf("He rebut la resposta: %s\n", paquet3);
 
         /* Tanquem el socket */
         close(s);
