@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         /* Execucio del protocol */
         /* 1) Demanem un número pel teclat */
         int n;
-        printf("Benvingut/da!\nPosa un número i et retornarem el pokemon corresponent a la pokedex de kalos ");
+        printf("Benvingut/da!\nPosa un número i et retornarem el pokemon corresponent a la pokedex de kanto ");
         scanf("%d", &n);
 
         /* Muntem el buffer */

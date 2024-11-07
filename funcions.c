@@ -7,7 +7,7 @@ int carregar(pokedex_t **pokedex)
 {
     FILE *fit;
     int num_poke = -1;
-    fit = fopen("Kalos_completa.txt", "r");
+    fit = fopen("pokedex_kanto.txt", "r");
     if (fit != NULL)
     {
         fscanf(fit, "%d\n", &num_poke);

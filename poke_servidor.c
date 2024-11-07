@@ -80,38 +80,18 @@ int main(int argc, char **argv)
                     }
                     else
                     {
-                        if (evolucio_bifurcada == 1)
+                        if (n == 133)
                         {
-                            if (n == 230)
-                            {
-                                sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n
-                                Evolucions:\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
-                                Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n",
-                                dex[n - 1].id, dex[n - 1].fase, dex[n - 1].nom, dex[n - 1].tipo1, dex[n - 1].tipo2, 
-                                dex[n].id, dex[n].fase, dex[n].nom, dex[n].tipo1, dex[n].tipo2, 
-                                dex[n + 1].id, dex[n + 1].fase, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2,
-                                dex[n + 2].id, dex[n + 2].fase, dex[n + 2].nom, dex[n + 2].tipo1, dex[n + 2].tipo2, 
-                                dex[n + 3].id, dex[n + 3].fase, dex[n + 3].nom, dex[n + 3].tipo1, dex[n + 3].tipo2, 
-                                dex[n + 4].id, dex[n + 4].fase, dex[n + 4].nom, dex[n + 4].tipo1, dex[n + 4].tipo2, 
-                                dex[n + 5].id, dex[n + 5].fase, dex[n + 5].nom, dex[n + 5].tipo1, dex[n + 5].tipo2, 
-                                dex[n + 6].id, dex[n + 6].fase, dex[n + 6].nom, dex[n + 6].tipo1, dex[n + 6].tipo2, 
-                                dex[n + 7].id, dex[n + 7].fase, dex[n + 7].nom, dex[n + 7].tipo1, dex[n + 7].tipo2);
-                            }
-                            else
-                            {
-                                sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\nEvolucions:\nNumero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\nNumero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s",
-                                dex[n - 1].id, dex[n - 1].fase, dex[n - 1].nom, dex[n - 1].tipo1, dex[n - 1].tipo2, dex[n].id, dex[n].fase, dex[n].nom, dex[n].tipo1, dex[n].tipo2, dex[n + 1].id, dex[n + 1].fase, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2);
-                            }
-
-                        } 
-                        
+                            sprintf(paquet, "Numero de la pokedex: %d Fase: %d Nom del Pokemon: %s Tipo 1: %s Tipo 2: %s\n
+                            Evolucions:\n
+                            Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
+                            Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n
+                            Numero de la Pokédex: %d Fase: %d Nom del Pokémon: %s Tipo 1: %s Tipo 2: %s\n",
+                            dex[n - 1].id, dex[n - 1].fase, dex[n - 1].nom, dex[n - 1].tipo1, dex[n - 1].tipo2, 
+                            dex[n].id, dex[n].fase, dex[n].nom, dex[n].tipo1, dex[n].tipo2, 
+                            dex[n + 1].id, dex[n + 1].fase, dex[n + 1].nom, dex[n + 1].tipo1, dex[n + 1].tipo2,
+                            dex[n + 2].id, dex[n + 2].fase, dex[n + 2].nom, dex[n + 2].tipo1, dex[n + 2].tipo2);
+                        }
                     }
                 }
                 else
