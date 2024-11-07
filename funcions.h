@@ -14,6 +14,8 @@ typedef struct
 
 int carregar(pokedex_t **pokedex);
 
+void allibera_memoria(pokedex_t **pokedex);
+
 void mostra_dex(pokedex_t *pokedex, int n);
 
 bool comprova_evolucio(pokedex_t *pokedex, int n);

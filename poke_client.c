@@ -37,17 +37,34 @@ int main(int argc, char **argv)
         /* 1) Demanem un número pel teclat */
         int n;
         printf("Benvingut/da!\nPosa un número i et retornarem el pokemon corresponent a la pokedex de kanto ");
-        scanf("%d", &n);
+        do
+        {
 
-        /* Muntem el buffer */
-        sprintf(paquet, "%d\n", n);
+            scanf("%d", &n);
+            if (n < 0 || n > 151)
+            {
+                if (n == -1)
+                {
+                    printf("fins la propera\n");
+                }
+                else
+                {
+                    printf("index fora de rang\n");
+                }
+            }
+            else
+            {
+                /* Muntem el buffer */
+                sprintf(paquet, "%d\n", n);
 
-        /* L'enviem */
-        sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_servidor, sizeof(contacte_servidor));
-        printf("Paquet enviat! Espero resposta...\n");
+                /* L'enviem */
+                sendto(s, paquet, MIDA_PAQUET, 0, (struct sockaddr *)&contacte_servidor, sizeof(contacte_servidor));
+                printf("Paquet enviat! Espero resposta...\n");
 
-        recvfrom(s, paquet, sizeof(paquet), 0, NULL, NULL); /* NULL -> No cal saber des d'on ens envien el paquet. */
-        printf("He rebut la resposta: %s\n", paquet);
+                recvfrom(s, paquet, sizeof(paquet), 0, NULL, NULL); /* NULL -> No cal saber des d'on ens envien el paquet. */
+                printf("He rebut la resposta: %s\n", paquet);
+            }
+        } while (n != -1);
 
         /* Tanquem el socket */
         close(s);
