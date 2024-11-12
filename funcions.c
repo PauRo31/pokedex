@@ -39,7 +39,7 @@ int carregar(pokedex_t **pokedex)
 bool comprova_evolucio(pokedex_t *pokedex, int n)
 {
     bool evo = false;
-    if (pokedex[n].fase < pokedex[n + 1].fase) // n es un pokemon basic
+    if (pokedex[n - 1].fase < pokedex[n].fase) // n - 1 pokemon indicat
     {
         evo = true;
     }
@@ -49,7 +49,7 @@ bool comprova_evolucio(pokedex_t *pokedex, int n)
 /*int fases_repes(pokedex_t *pokedex, int n)
 {
     int repe = 0;
-    if (pokedex[n].fases_repes == 1)
+    if (pokedex[n - 1].fases_repes == 1)
     {
         repe = 1;
     }
